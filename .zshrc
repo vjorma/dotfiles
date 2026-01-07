@@ -1,16 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                                              #
-#    .zshrc                                                                    #
-#                                                                              #
-#    By: vjorma <vjorma@gmail.com>                                             #
-#                                                                              #
-#    Created: 2023/11/17 16:17:12 by vjorma                                    #
-#    Updated:     /  /     :  :   by vjorma                                    #
-#                                                                              #
-# **************************************************************************** #
-
-export MAIL=vjorma@gmail.com
 # Uncomment zmodload at top and zprof at bottom to find out what's 
 # causing delays in shell startup
 #
@@ -23,9 +10,15 @@ if ! ssh-keygen -L -f "$CERT" >/dev/null 2>&1; then
     issue-fsdev-cert
 fi
 
+#export USER="vjorma"
+#FIXME Printed black on black:
+#export CLICOLOR=""
 export GREP_OPTIONS="--color"
 export MAIL="vjorma@gmail.com"
+## incompatible with brew
 PS1='%(?.%F{green}.%F{red})%?%f%m %~%# '
+
+# bindkey '\t\t' autosuggest-accept
 
 # Shell command history settings. Do not export.
 #
@@ -46,6 +39,10 @@ alias cccgs="cc -Wall -Wextra -Werror -fsanitize=address -fno-omit-frame-pointer
 alias cccgg="cc -Wall -Wextra -Werror -Wconversion -O0 -g"
 alias cccggs="cc -Wall -Wextra -Werror -Wconversion -O0 -g -fsanitize=address -fno-omit-frame-pointer"
 alias normi="norminette -R CheckForbiddenSourceHeader"
+alias l="cd proj/libft"
+alias francinette=/Users/niwa/francinette/tester.sh
+
+alias paco=/Users/niwa/francinette/tester.sh
 # TODO
 # source /tmp/zsh-syntax-highlighting/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
