@@ -1,27 +1,56 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    .zshrc                                             :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vjorma <vjorma@gmail.com>                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/17 16:17:12 by vjorma            #+#    #+#              #
-#    Updated: 2023/11/17 16:21:53 by vjorma           ###   ########.fr        #
+#                                                                              #
+#    .zshrc                                                                    #
+#                                                                              #
+#    By: vjorma <vjorma@gmail.com>                                             #
+#                                                                              #
+#    Created: 2023/11/17 16:17:12 by vjorma                                    #
+#    Updated:     /  /     :  :   by vjorma                                    #
 #                                                                              #
 # **************************************************************************** #
 
 export MAIL=vjorma@gmail.com
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=10000000
-SAVEHIST=10000000
-PS1='%(?.%F{green}.%F{red})%?%f %~%# '
-setopt inc_append_history
-# setopt share_history
-alias normi="echo 'norminette -R CheckForbiddenSourceHeader' ; norminette -R CheckForbiddenSourceHeader"
-alias ccc="echo 'cc -Wall -Wextra -Werror' ; cc -Wall -Wextra -Werror"
-alias cccg="echo 'cc -g -Wall -Wextra -Werror' ; cc -g -Wall -Wextra -Werror"
-alias pu="git push origin master"
+# Uncomment zmodload at top and zprof at bottom to find out what's 
+# causing delays in shell startup
+#
+# zmodload zsh/zprof
 
-alias francinette=/Users/vjorma/francinette/tester.sh
+# Check SSH certificate validity and issue new certificate if needed
+#
+CERT=~/.ssh/certs/ed25519_fsdev_26-cert.pub
+if ! ssh-keygen -L -f "$CERT" >/dev/null 2>&1; then
+    issue-fsdev-cert
+fi
 
-alias paco=/Users/vjorma/francinette/tester.sh
+export GREP_OPTIONS="--color"
+export MAIL="vjorma@gmail.com"
+PS1='%(?.%F{green}.%F{red})%?%f%m %~%# '
+
+# Shell command history settings. Do not export.
+#
+HISTFILE=~/.zsh_history
+# 50 thousand lines in memory
+HISTSIZE=50000
+# 1 million lines in disk
+SAVEHIST=1000000
+setopt INC_APPEND_HISTORY        # Write to file immediately
+setopt SHARE_HISTORY             # Share history
+setopt HIST_IGNORE_ALL_DUPS      # Don't record same command twice
+setopt EXTENDED_HISTORY          # Save timestamps
+
+alias vi="~/opt/neovim/bin/nvim"
+alias ccc="cc -Wall -Wextra -Werror"
+alias cccg="cc -Wall -Wextra -Werror -O0 -g"
+alias cccgs="cc -Wall -Wextra -Werror -fsanitize=address -fno-omit-frame-pointer -O0 -g"
+alias cccgg="cc -Wall -Wextra -Werror -Wconversion -O0 -g"
+alias cccggs="cc -Wall -Wextra -Werror -Wconversion -O0 -g -fsanitize=address -fno-omit-frame-pointer"
+alias normi="norminette -R CheckForbiddenSourceHeader"
+# TODO
+# source /tmp/zsh-syntax-highlighting/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+## export NVM_DIR="$HOME/.nvm"
+## [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+## [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# zprof
