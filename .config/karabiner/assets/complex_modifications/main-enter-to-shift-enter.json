@@ -1,18 +1,25 @@
 {
-  "title": "Main Enter → Shift+Enter (keep keypad Enter normal)",
+  "title": "Main Enter → Shift+Enter with app exceptions",
   "rules": [
     {
-      "description": "Map main Enter/Return to Shift+Enter",
+      "description": "Main Enter becomes Shift+Enter except in Numbers, Keynote, Pages, Xcode, VSCode",
       "manipulators": [
         {
           "type": "basic",
-          "from": {
-            "key_code": "return_or_enter"
-          },
+          "from": { "key_code": "return_or_enter" },
           "to": [
+            { "key_code": "return_or_enter", "modifiers": ["shift"] }
+          ],
+          "conditions": [
             {
-              "key_code": "return_or_enter",
-              "modifiers": ["shift"]
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^com\\.apple\\.iWork\\.Numbers$",
+                "^com\\.apple\\.iWork\\.Keynote$",
+                "^com\\.apple\\.iWork\\.Pages$",
+                "^com\\.apple\\.Xcode$",
+                "^com\\.microsoft\\.VSCode$"
+              ]
             }
           ]
         }
@@ -20,4 +27,5 @@
     }
   ]
 }
+
 
