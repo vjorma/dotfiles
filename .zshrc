@@ -4,11 +4,15 @@
 # Ville Jorma <vjorma@gmail.com> 2026                                         #
 #                                        <https://github.com/vjorma/dotfiles> #
 #                                                                             #
+# Set the environment for interavtive shells. Loaded after .zprofile          #
+# Order: .zshenv → .zprofile → .zshrc → .zlogin → .zlogout                    #
+#                                                                             #
+#                                                                             #
+# Uncomment zmodload at top and zprof at bottom to find out what's # causing  #
+# delays in shell startup.                                                    #
+#                                                                             #
 ###############################################################################
-#
-# Uncomment zmodload at top and zprof at bottom to find out what's 
-# causing delays in shell startup
-#
+
 # zmodload zsh/zprof
 
 # Notify if some config files are out of sync with git
@@ -18,7 +22,8 @@ if ! dot diff --quiet; then
 	echo "⚠️  dotfiles changed: $(dot diff --name-only | tr '\n' ' ')"
 fi
 
-alias vi='$HOME/opt/neovim/bin/nvim'
+# alias vi='$HOME/opt/neovim/bin/nvim'
+
 # Check SSH certificate validity and issue new certificate if needed
 #
 CERT=~/.ssh/certs/ed25519_fsdev_26-cert.pub
