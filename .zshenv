@@ -25,3 +25,5 @@ export SHELL_SESSIONS_DISABLE=1
 # across nested shells.
 typeset -U path
 path=("$HOME/macports/bin" "$HOME/opt/bin" /usr/local/bin $path)
+
+alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
