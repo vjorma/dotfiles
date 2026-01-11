@@ -1,0 +1,23 @@
+{
+  "title": "Main Enter → Shift+Enter (keep keypad Enter normal)",
+  "rules": [
+    {
+      "description": "Map main Enter/Return to Shift+Enter",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "return_or_enter"
+          },
+          "to": [
+            {
+              "key_code": "return_or_enter",
+              "modifiers": ["shift"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
