@@ -6,7 +6,7 @@
 #                                                                             #
 # Set the environment for interactive shells.                                 #
 # login shell: .zshenv → .zprofile → .zshrc → .zlogin → .zlogout              #
-# non-login:   .zshenv → .zshrc → .zlogin → .zlogout                          #
+# non-login:   .zshenv → .zshrc                                               #
 #                                                                             #
 # Uncomment zmodload at top and zprof at bottom to find out what's causing    #
 # delays in shell startup.                                                    #
@@ -29,11 +29,11 @@ if [[ ! -f $CERT ]] || ! ssh-keygen -L -f "$CERT" >/dev/null 2>&1; then
     issue-fsdev-cert.sh
 fi
 
-
 setopt prompt_subst
 
-# Shorten $PWD to max 40 chars, keeping start and end.
-# Middle is replaced with a colored ellipsis.
+# Shorten $PWD to max 40 chars, keeping start and end. Middle is replaced with
+# a colored ellipsis.
+#
 shorten_path() {
   local max=40
   local p="${PWD/#$HOME/~}"   # Replace $HOME with ~
@@ -51,7 +51,6 @@ shorten_path() {
   print -r -- "${start}%F{red}…%f${end}"
 }
 
-
 # Exit code of last run program. Green if 0, Red if != 0
 # hostname
 # space
@@ -60,7 +59,7 @@ shorten_path() {
 # colored % if normal user, # if root
 # space
 # 
-PS1='%(?.%F{green}.)%?%f%m %F{red}$(shorten_path)%f%F{cyan}%#%f '
+PS1="%(?.%F{green}.)%?%f%m %F{red}$(shorten_path)%f%F{cyan}%#%f "
 
 
 # Shell command history settings. Do not export.
