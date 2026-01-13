@@ -4,7 +4,7 @@
 # Ville Jorma <vjorma@gmail.com> 2026                                         #
 #                                        <https://github.com/vjorma/dotfiles> #
 #                                                                             #
-# Set the environment for interactive shells.                                 #
+# Personal initialization file for Zsh interactive shells.                    #
 # login shell: .zshenv → .zprofile → .zshrc → .zlogin → .zlogout              #
 # non-login:   .zshenv → .zshrc                                               #
 #                                                                             #
@@ -16,6 +16,10 @@
 # zmodload zsh/zprof
 
 # alias vi='$HOME/opt/neovim/bin/nvim'
+
+# Use Emacs-style command line editing (eg. ^A and ^E) even if $EDITOR is vi
+#
+bindkey -e
 
 # Notify if some config files are out of sync with git
 #
