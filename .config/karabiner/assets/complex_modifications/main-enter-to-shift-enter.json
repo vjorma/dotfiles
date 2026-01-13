@@ -1,8 +1,8 @@
 {
-  "title": "Main Enter → Shift+Enter with app exceptions",
+  "title": "Shift+Enter only in browsers (Chrome, Safari, Opera)",
   "rules": [
     {
-      "description": "Main Enter becomes Shift+Enter except in Numbers, Keynote, Pages, Xcode, VSCode",
+      "description": "Shift+Enter only when frontmost app is Chrome, Safari, or Opera",
       "manipulators": [
         {
           "type": "basic",
@@ -12,13 +12,11 @@
           ],
           "conditions": [
             {
-              "type": "frontmost_application_unless",
+              "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.apple\\.iWork\\.Numbers$",
-                "^com\\.apple\\.iWork\\.Keynote$",
-                "^com\\.apple\\.iWork\\.Pages$",
-                "^com\\.apple\\.Xcode$",
-                "^com\\.microsoft\\.VSCode$"
+                "^com\\.google\\.Chrome$",
+                "^com\\.apple\\.Safari$",
+                "^com\\.operasoftware\\.Opera$"
               ]
             }
           ]
@@ -27,5 +25,4 @@
     }
   ]
 }
-
 
